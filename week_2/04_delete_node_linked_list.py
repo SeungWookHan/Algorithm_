@@ -29,27 +29,29 @@ class LinkedList:
         return node
 
     def add_node(self, index, value):
-        node = self.head
-        count = 0
-        while count < index:
-            node = node.next
-            count += 1
-        try:
-            prev_node = self.get_node(index - 1)
-        except:
-            pass
-        now_node = node
-        add = Node(value)
-        if count == 0:
-            add.next = now_node
-            self.head = add
-        else:
-            add.next = now_node
-            prev_node.next = add
-        return
+        new_node = Node(value)
+        if index == 0:
+            new_node.next = self.head
+            self.head = new_node
+            return
+
+        node = self.get_node(index - 1)
+        next_node = node.next
+        node.next = new_node
+        new_node.next = next_node
+
+    def delete_node(self, index):
+        if index == 0:
+            next_node = self.head.next
+            self.head = next_node
+            return
+        node = self.get_node(index - 1)
+        next_node = self.get_node(index + 1)
+        node.next = next_node
 
 
 linked_list = LinkedList(5)
 linked_list.append(12)
-linked_list.add_node(0, 3)
+linked_list.append(8)
+linked_list.delete_node(1)
 linked_list.print_all()

@@ -16,21 +16,17 @@ class LinkedList:
 
 
 def get_linked_list_sum(linked_list_1, linked_list_2):
-    list_1 = []
-    list_2 = []
-    sum = []
-    cur_1 = linked_list_1.head
-    cur_2 = linked_list_2.head
-    while cur_1 is not None:
-        list_1.append(cur_1.data)
-        cur_1 = cur_1.next
-    while cur_2 is not None:
-        list_2.append(cur_2.data)
-        cur_2 = cur_2.next
-    for num1, num2 in zip(list_1, list_2):
-        sum.append(num1+num2)
-    return sum
+    sum_1 = _get_linked_list_sum(linked_list_1)
+    sum_2 = _get_linked_list_sum(linked_list_2)
+    return sum_1 + sum_2
 
+def _get_linked_list_sum(linked_list):
+    linked_list_sum = 0
+    head = linked_list.head
+    while head is not None:
+        linked_list_sum = linked_list_sum * 10 + head.data
+        head = head.next
+    return linked_list_sum
 
 linked_list_1 = LinkedList(6)
 linked_list_1.append(7)

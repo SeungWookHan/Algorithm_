@@ -42,12 +42,10 @@ class LinkedList:
 
     def delete_node(self, index):
         if index == 0:
-            next_node = self.head.next
-            self.head = next_node
+            self.head = self.head.next
             return
         node = self.get_node(index - 1)
-        next_node = self.get_node(index + 1)
-        node.next = next_node
+        node.next = node.next.next
 
 
 linked_list = LinkedList(5)

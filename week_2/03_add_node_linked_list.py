@@ -28,6 +28,28 @@ class LinkedList:
             count += 1
         return node
 
+    def add_node(self, index, value):
+        node = self.head
+        count = 0
+        while count < index:
+            node = node.next
+            count += 1
+        try:
+            prev_node = self.get_node(index - 1)
+        except:
+            pass
+        now_node = node
+        add = Node(value)
+        if count == 0:
+            add.next = now_node
+            self.head = add
+        else:
+            add.next = now_node
+            prev_node.next = add
+        return
+
+
 linked_list = LinkedList(5)
 linked_list.append(12)
-print(linked_list.get_node(0).data) # -> 5를 들고 있는 노드를 반환해야 합니다!
+linked_list.add_node(0, 3)
+linked_list.print_all()
