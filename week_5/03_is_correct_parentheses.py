@@ -13,7 +13,7 @@ def is_correct_parenthesis(string):
 
 def reverse_parenthesis(string):
     reversed_string = ""
-    for char in string:  # 주의할점: 첫번째 문자 마지막 문자를 제거하라고 했으니 인덱싱 필요
+    for char in string:
         if char == "(":
             reversed_string += ")"
         else:
